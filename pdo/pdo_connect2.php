@@ -6,6 +6,6 @@ try {
     $password='123456';
     $pdo = new PDO($dsn, $username, $password);
     var_dump($pdo);
-} catch (PDOExcetion $e) {
+} catch (PDOException $e) {
     echo $e->getMessage();
 }

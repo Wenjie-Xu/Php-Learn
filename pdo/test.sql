@@ -1,0 +1,7 @@
+DELIMITER //
+CREATE PROCEDURE test1()
+BEGIN
+    SELECT * FROM userInfo;
+END
+//
+DELIMITER ;
