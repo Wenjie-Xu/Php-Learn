@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Ajax JSON数据</title>
+</head>
+<body>
+    <div class="container">
+        <h2>用户列表</h2>
+        <ul id="userlist">
+        </ul>
+    </div>
+    <script src="./jQuery/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $.ajax({
+                url:'http://localhost:8080/Ajax/json.php',
+                // data:{name:'xuwenjie',message:'nihao'},
+                type:'get',
+                dataType:"json",
+                async:true,
+                success:function(data){
+                    console.log(typeof data);
+                    processData(data);
+                },
+                error:function(err){
+                    alert('请求失败');
+                }
+            })
+            // 一般都是使用get方式请求数据
+            $.get('http://localhost:8080/Ajax/json.php',processData, 'json');
+            function processData(data){
+                $.each(data, function(index, item){
+                    $("<li>").append("<p>"+item.name+"</p>").appendTo("#userlist");
+                })
+            }
+        })
+    </script>
+</body>
+</html>

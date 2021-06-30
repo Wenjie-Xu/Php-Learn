@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Ajax</title>
+</head>
+<body>
+    <h1>发起get请求</h1>
+    <hr>
+    <form id='myForm'>
+        姓名 <input type="text" name="name"><br>
+        信息 <input type="text" name="message">
+    </form>
+
+    <button id="btn00">get</button>
+    <button id="btn01">ajax</button>
+    <script src="./jQuery/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("#btn00").click(function(){
+            $.get('http://localhost:8080/Ajax/doAction.php?'+$("#myForm").serialize()
+            ,function(data){
+                window.alert(data);
+            })
+        });
+        $("#btn01").click(function(){
+            $.ajax({
+                url: 'http://localhost:8080/Ajax/doAction.php?',
+                // data: {name:'JIM',message:'nihao'},
+                data: $("#myForm").serialize(),
+                type: 'get',
+                async: true,
+                success: function(data){
+                    alert(data);
+                }
+            });
+        })
+    })
+    </script>
+</body>
+</html>

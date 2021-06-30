@@ -4,4 +4,4 @@ BEGIN
     SELECT * FROM userInfo;
 END
 //
-DELIMITER ;
+DELIMITER ; 
