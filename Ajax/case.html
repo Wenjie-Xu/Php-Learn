@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        select {
+            width: 150px;
+            padding: 5px;
+        }
+    </style>
+    <title>地址联动</title>
+</head>
+<body>
+    <h1>请选择您的地址</h1>
+    <select id="province"></select>
+    <select id="city"></select>
+    <select id="district"></select>
+</body>
+<script src="./jQuery/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+    /*
+        地址API的用法
+        address.php?upid=xxxx，默认是0
+    */
+    $(document).ready(function(){
+        var addressApi='http://localhost:8080/Ajax/jQuery/address.php';
+        $.ajax({
+            url:addressApi,
+            type:"get",
+            data:{upid:0},
+            dataType:"json",
+            success:function(data){
+                $.each(data, function(index, item){
+                    $("<option>").html(item.name).val(item.pid).appendTo("#province");
+                });
+            }
+        })
+
+        // 给省市绑定change时间
+        $("#province,#city").change(function(){
+            var val = $(this).val();
+            var that = $(this);
+            $.ajax({
+            url:addressApi,
+            type:"get",
+            data:{upid:val},
+            dataType:"json",
+            success:function(data){
+                that.next("select").empty();
+                $.each(data, function(index, item){
+                    $("<option>").html(item.name).val(item.pid).appendTo(that.next('select'));
+                });
+                // 自动触发后面一个select的change事件
+                that.next('select').trigger('change');
+            }
+        })
+        })
+    })
+</script>
+</html>
