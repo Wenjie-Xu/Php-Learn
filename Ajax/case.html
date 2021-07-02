@@ -26,36 +26,30 @@
     */
     $(document).ready(function(){
         var addressApi='http://localhost:8080/Ajax/jQuery/address.php';
-        $.ajax({
-            url:addressApi,
-            type:"get",
-            data:{upid:0},
-            dataType:"json",
-            success:function(data){
-                $.each(data, function(index, item){
-                    $("<option>").html(item.name).val(item.pid).appendTo("#province");
-                });
-            }
-        })
+
+        function processAddress(id, Ele) {
+            $.ajax({
+                url: addressApi,
+                type: "get",
+                data: { upid: id },
+                dataType: "json",
+                success: function (data) {
+                    Ele.empty();
+                    $.each(data, function (index, item) {
+                        $("<option>").html(item.name).val(item.pid).appendTo(Ele);
+                    });
+                    // 自动触发后面一个select的change事件
+                    Ele.trigger('change');
+                }
+            })
+        }
+        processAddress(0, $("#province"));
 
         // 给省市绑定change时间
         $("#province,#city").change(function(){
             var val = $(this).val();
             var that = $(this);
-            $.ajax({
-            url:addressApi,
-            type:"get",
-            data:{upid:val},
-            dataType:"json",
-            success:function(data){
-                that.next("select").empty();
-                $.each(data, function(index, item){
-                    $("<option>").html(item.name).val(item.pid).appendTo(that.next('select'));
-                });
-                // 自动触发后面一个select的change事件
-                that.next('select').trigger('change');
-            }
-        })
+            processAddress(val, that.next('select'));
         })
     })
 </script>
