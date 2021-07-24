@@ -4,12 +4,15 @@
   <meta charset="UTF-8">
   <title></title>
 </head>
-<body>
+<body ng-app>
 
 <!--
-  ng-app(指令) : 告诉angular核心它管理当前标签所包含的整个区域,并且会自动创建$rootScope根作用域对象
+  指令：
+  ng-app: 告诉Angular核心它管理当前标签所包含的整个区域,并且会自动创建$rootScope根作用域对象
   ng-model : 将当前输入框的值与谁关联(属性名:属性值), 并作为当前作用域对象($rootScope)的属性
-  {{}} (表达式) : 显示数据,从作用域对象的指定属性名上取
+
+  表达式
+  {{}} : 显示数据,从作用域对象的指定属性名上取
 
   1、表达式：通常有一个返回值，可以放在任何需要值得地方，比如函数调用的参数，一个变量名，一个运算，
 
@@ -21,7 +24,8 @@
   4、特例：if语句，就不用加封号  可也是完整的语句。
 -->
 
-
+<input type="text" ng-model="username">
+<p>您输入的内容是：<span>{{ username }}</span></p>
 <script src="../../js/angular-1.2.29/angular.js"></script>
 
 </body>

@@ -5,10 +5,19 @@
   <title></title>
 </head>
 <body>
-
+<input type="text">
+<p>您输入的内容是：<span></span></p>
 <script type="text/javascript" src="../../js/jquery/jquery-1.11.1.js"></script>
 <script type="text/javascript">
-
+  // document.ready：文档加载完毕之后，结构加载完毕
+  // window.onload：整个页面加载完毕，包含图片……
+  $(document).ready(function(){
+    $('input').keyup(function(){
+      // this是原生js的对象，val()方法是jqueryDOM的
+      var value = $(this).val();
+      $('span').text(value);
+    })
+  })
 </script>
 </body>
 </html>
