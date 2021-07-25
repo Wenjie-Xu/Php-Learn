@@ -22,12 +22,52 @@
   }
 </style>
 <body>
+<div ng-app="myApp">
+  <div ng-controller="myCon1">
+    <div style="width: 80px;height: 80px;"ng-style="style" 
+    ng-mouseenter="mouseenter()" ng-mouseleave="mouseleave()">
+    </div>
 
+    <div>
+      <ul>
+        <li ng-class="{evenB:$even, oddB:$odd}" ng-repeat="item in persons">
+          {{ item.username }} -- {{ item.age }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 
 <script type='text/javascript' src="../../js/angular-1.5.5/angular.js"></script>
 <script type="text/javascript">
+  var myModule = angular.module('myApp', []);
+  myModule
+    .controller('myCon1',function($scope){
+      $scope.style = {
+        background:'green',
+      };
 
+      $scope.mouseenter = function(){
+        $scope.style = {
+          background:'blue',
+        };
+      }
+      $scope.mouseleave = function(){
+        $scope.style = {
+          background:'green',
+        };
+      }
+
+      $scope.persons = [
+        {username:'wenjie1', age:24},
+        {username:'wenjie2', age:24},
+        {username:'wenjie3', age:24},
+        {username:'wenjie4', age:24},
+      ];
+
+
+    });
 </script>
 </body>
 

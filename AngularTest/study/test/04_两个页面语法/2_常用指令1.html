@@ -23,10 +23,78 @@
 
 <body ng-app="myApp" >
 
+  <div ng-controller="myController">
+    <div>
+      <h2>价格计算器（自动）</h2>
+      数量：<input type="number" ng-model="amount">
+      价格：<input type="number" ng-model="price">
+      <br/>
+      总计: {{amount*price}}
+    </div>
 
+    <div>
+      <h2>价格计算器（手动）</h2>
+      数量：<input type="number" ng-model="amount1">
+      价格：<input type="number" ng-model="price1">
+      <button ng-click="getResult()">计算</button>
+      <br/>
+      总计: {{totalPrice}}
+    </div>
+<!--
+* ng-repeat： 遍历数组显示数据， 数组有几个元素就会产生几个新的作用域
+              因为是不同的作用域，所以不会相互影响
+* $index(下标), $first(是否是第一个元素), $last(是否是最后一个元素), $middle(是否是中间元素), $odd(是奇数), $even(是偶数)
+-->
+    <div>
+      <h2>人员信息表</h2>
+      <ul>
+        <li ng-repeat="person in persons track by $index">
+          {{ $index + "--" + $odd + "--" +person.username + "--" + person.age }}
+        </li>
+      </ul>
+    </div>
+<!--
+* ng-bind： 解决使用{{}}显示数据闪屏（在很短时间内显示{{}}）
+-->
+    <p ng-bind="123"></p>
+<!--
+* ng-show: 布尔类型， 如果为true才显示
+* ng-hide: 布尔类型， 如果为true就隐藏
+-->
+    <div>
+      <button ng-click="showhide()">切换喜欢</button>
+      <p ng-show="isLike">你看的见我</p>
+      <p ng-hide="isLike">你看不见我</p>
+    </div>
+  </div>
 <script type='text/javascript' src='../../js/angular-1.5.5/angular.js'></script>
 <script type='text/javascript'>
+//创建模块对象
+var myModule = angular.module("myApp", []);
+myModule
+  .controller("myController", function($scope){
+    $scope.amount = 1;
+    $scope.price = 20;
+    $scope.amount1 = 1;
+    $scope.price1 = 20;
+    $scope.totalPrice = 20;
+    $scope.getResult = function(){
+      $scope.totalPrice = $scope.amount1*$scope.price1;
+    }
 
+    $scope.persons = [
+      {username:'kobe', age:39},
+      {username:'kobe2', age:39},
+      {username:'kobe3', age:39},
+      {username:'kobe4', age:39},
+      {username:'kobe5', age:39},
+    ]
+
+    $scope.isLike = true;
+    $scope.showhide = function(){
+      $scope.isLike = !$scope.isLike;
+    }
+  })
 </script>
 
 </body>
