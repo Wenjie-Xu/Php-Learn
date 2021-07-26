@@ -9,8 +9,17 @@
         }
     </style>
 </head>
+<!--
+    子作用域的范围和根作用域的范围一样
+-->
 <body ng-app="noteApp" ng-controller="NoteController">
-
+<textarea cols="30" rows="10" ng-style="areastyle" ng-model="message"></textarea>
+<div>
+    <button ng-click="save()">保存</button>
+    <button ng-click="read()">读取</button>
+    <button ng-click="remove()">删除</button>
+</div>
+<p>剩余字数：{{ getLength() }}</p>
 <script type="text/javascript" src="../../js/angular-1.5.5/angular.js"></script>
 <script type="text/javascript" src="app.js"></script>
 </body>
