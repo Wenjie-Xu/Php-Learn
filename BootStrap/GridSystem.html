@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap-3.4.1/dist/css/bootstrap.min.css">
+    <style type="text/css">
+        .row {
+            margin-bottom: 20px;
+        }
+        .row .row {
+            margin-top: 10px;
+            margin-bottom: 0px;
+        }
+        [class*="col-"] {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            background-color: #eee;
+            background-color: rgba(86, 61, 124, .15);
+            border: 1px solid #ccc;
+            border: 1px solid rgba(86, 61, 124, .2);
+        }
+    </style>
+    <title>栅格系统</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">col-md-8</div>
+            <div class="col-md-4">col-md-4</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">col-md-4</div>
+            <div class="col-md-4">col-md-4</div>
+            <div class="col-md-4">col-md-4</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">col-md-4偏移</div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                one
+                <div class="row">
+                    <div class="col-xs-8">
+                        first
+                    </div>
+                    <div class="col-xs-4">
+                        second
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9 col-md-push-3">col-md-9位置切换push</div>
+            <div class="col-md-3 col-md-pull-9">col-md-3位置切换pull</div>
+        </div>
+    </div>
+</body>
+</html>
