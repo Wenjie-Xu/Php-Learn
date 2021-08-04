@@ -8,13 +8,22 @@
   <div ng-controller="myCtrl">
     <h2>我的备忘录</h2>
     <div>
+<<<<<<< HEAD
       <input type="text">
       <button>新增</button>
+=======
+      <input type="text" ng-model="todo">
+      <button ng-click="add()">新增</button>
+>>>>>>> e6558115d218a0bdf2c480ee50d023ea5e5d7de0
     </div>
     <div>
       <div ng-repeat="item in todos track by $index"><input type="checkbox" ng-model="item.checked">{{ item.name }}</option></div>
     </div>
+<<<<<<< HEAD
     <button>删除选中的记录</button>
+=======
+    <button ng-click="del()">删除选中的记录</button>
+>>>>>>> e6558115d218a0bdf2c480ee50d023ea5e5d7de0
   </div>
 <script type="text/javascript" src="../../js/angular-1.5.5/angular.js"></script>
 <script type="text/javascript" src="app.js"></script>
