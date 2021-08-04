@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="./bootstrap-3.4.1/dist/css/bootstrap.min.css">
+     -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+     <title>表单支持的控件</title>
+</head>
+<body>
+    <form role="form">
+        <fieldset>
+            <div class="form-group has-success has-feedback">
+                <label>username</label>
+                <input type="text" class="form-control">
+                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                <textarea class="form-control" rows="5">hello</textarea>
+            </div>
+            <div class="form-group col-md-12">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="1">吃橘子
+                    </label>
+                    <label>
+                        <input type="checkbox" value="2">吃苹果
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <input type="radio" name="sex" value="1">男
+                <input type="radio" name="sex" value="2">女 
+            </div>
+            <div class="form-group col-md-12">
+                <select class="form-control" multiple>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <p class="form-control-static">请按照我的格式输入：hello@uco.com</p>
+            </div>
+            <div class="form-group col-md-12">
+                <input type="text" class="form-control" placeholder="不允许修改了" disabled>
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>
