@@ -13,6 +13,7 @@ define("DEBUG", true);
 define("MYFRAME", realpath("./"));
 define("CORE", MYFRAME."/core");
 define("APP", MYFRAME."/app");
+define("MODULE", 'app');
 
 // 修改配置文件，显示错误(调试模式)
 if(DEBUG) {
@@ -31,5 +32,4 @@ include_once CORE . '/myframe.php';
 spl_autoload_register("\core\myframe::load");
 
 \core\myframe::run();
-\core\route::sayHello();
 ?>
