@@ -1,10 +1,15 @@
 <?php
+
 namespace app\ctrl;
 
-class indexCtrl 
+class indexCtrl extends \core\myframe
 {
     public function index()
     {
-        p("This is indexCtrl indexAction");
+        $title = '视图文件';
+        $message = 'Hello World';
+        $this->assign('title', $title);
+        $this->assign('message', $message);
+        $this->display('index.html');
     }
 }

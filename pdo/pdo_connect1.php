@@ -5,8 +5,8 @@ try {
     $dsn = 'mysql:host=127.0.0.1;dbname=test';
     $username = 'root';
     $password = '123456';
-    $pdo = new PDO($dsn,$username,$password);
+    $pdo = new PDO($dsn, $username, $password);
     var_dump($pdo);
-}catch (PDOException $e) {
+} catch (PDOException $e) {
     echo $e->getMessage();
 }
