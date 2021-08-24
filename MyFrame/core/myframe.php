@@ -11,6 +11,9 @@ class myframe
 
     public static function run()
     {
+        \core\lib\log::init();
+        \core\lib\log::log($_SERVER, 'SecondLog');
+
         $route = new \core\lib\route();
         $ctrlClass = $route->ctrl;
         $action = $route->action;
