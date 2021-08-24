@@ -1,14 +1,14 @@
 <?php
-namespace core\lib;
+namespace app\model;
+
+use \core\lib\conf;
 
 class model extends \PDO{
     public function __construct()
     {
-        $dsn = 'mysql:host=127.0.0.1;dbname=test';
-        $username = 'root';
-        $passwd = '123456';
+        $conf = conf::all('database');
         try{
-            parent::__construct($dsn, $username, $passwd);
+            parent::__construct($conf['dsn'], $conf['username'], $conf['passwd']);
         } catch(\Exception $e) {
             echo $e->getMessage();
         }

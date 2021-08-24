@@ -2,6 +2,8 @@
 
 namespace core\lib;
 
+use \core\lib\conf;
+
 /**
  * 路由类的作用就是：当访问的是//xxx.com/index/index
  * 将控制访问index控制器里的index方法
@@ -31,7 +33,7 @@ class route
                 $this->action = $uri_arr[1];
                 unset($uri_arr[1]);
             } else {
-                $this->action = 'index';
+                $this->action = conf::get('CTRL', 'route');
             }
             // url多余的部分转为GET参数
             // id/1/str/2/test/3
@@ -44,8 +46,8 @@ class route
                 $i += 2;
             }
         } else {
-            $this->ctrl = 'index';
-            $this->method = 'index';
+            $this->ctrl = conf::get('CTRL', 'route');
+            $this->action = conf::get('ACTION', 'route');
         }
     }
 }
