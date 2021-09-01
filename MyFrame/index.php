@@ -15,8 +15,16 @@ define("CORE", MYFRAME."/core");
 define("APP", MYFRAME."/app");
 define("MODULE", 'app');
 
+include "vendor/autoload.php";
+
 // 修改配置文件，显示错误(调试模式)
 if(DEBUG) {
+    $whoops = new \Whoops\Run();
+    $errorTitle = "出错信息";
+    $option = new \Whoops\Handler\PrettyPageHandler();
+    $option->setPageTitle($errorTitle);
+    $whoops->pushHandler($option);
+    $whoops->register();
     ini_set("display_error", "On");
 } else {
     ini_set("display_error", "Off");
@@ -27,7 +35,7 @@ include_once CORE . "/common/function.php";
 
 // 启动框架
 include_once CORE . '/myframe.php';
-
+dump($_SERVER);
 // 自动加载类机制
 spl_autoload_register("\core\myframe::load");
 
