@@ -35,7 +35,7 @@ include_once CORE . "/common/function.php";
 
 // 启动框架
 include_once CORE . '/myframe.php';
-dump($_SERVER);
+
 // 自动加载类机制
 spl_autoload_register("\core\myframe::load");
 
