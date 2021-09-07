@@ -4,6 +4,7 @@
     "type" : "study",
     "keywords": ["PHP", "study"],
     "require": {
-        "php" : ">= 5.3.0"
+        "php" : ">= 5.3.0",
+        "filp/whoops" : "*"
     }
 }
