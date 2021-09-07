@@ -1,0 +1,9 @@
+{
+    "name" : "wenjie/php-learn",
+    "description": "PHP Learn",
+    "type" : "study",
+    "keywords": ["PHP", "study"],
+    "require": {
+        "php" : ">= 5.3.0"
+    }
+}
