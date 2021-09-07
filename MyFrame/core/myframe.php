@@ -51,10 +51,15 @@ class myframe
 
     public function display($file)
     {
-        $file = APP . '/views/' . $file;
-        if (is_file($file)) {
-            extract($this->assign);
-            include $file;
+        $filepath = APP . '/views/' . $file;
+        if (is_file($filepath)) {
+            $loader = new \Twig\Loader\FilesystemLoader(APP.'/views');
+            $twig = new \Twig\Environment($loader, [
+                'cache' => MYFRAME.'/log/twig',
+                'debug' => DEBUG
+            ]);
+            $template = $twig->load($file);
+            echo $template->render($this->assign?$this->assign:[]);
         }
     }
 }
