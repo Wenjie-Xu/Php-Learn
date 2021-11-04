@@ -1,13 +1,15 @@
 <?php
 class MyMemcached
 {
+    // 兼容性Memecached
     private $type = 'Memcached';
+
     private $m;
     private $error;
     public function __construct()
     {
         if(!class_exists($this->type)){
-            $this->error = 'No '.$this->type;
+            $this->error = 'Class ' . $this->type .' Is Not Exists!';
             return false;
         } else {
             $this->m = new $this->type();
@@ -31,18 +33,19 @@ class MyMemcached
 
     public function delete($key)
     {
+        return $this->m->delete($key);
     }
 
     public function s($key, $value = '', $time = 0)
     {
-        $number = func_get_args();
+        $number = count(func_get_args());
         if ($number == 1) {
-            $this->get($key);
+            return $this->get($key);
         } else if ($number >= 2) {
             if ($value === NULL) {
-                $this->delete($key);
+                return $this->delete($key);
             } else {
-                $this->set($key, $value, $time);
+                return $this->set($key, $value, $time);
             };
         }
     }

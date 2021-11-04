@@ -2,7 +2,8 @@
 include 'MyMemcached.php';
 
 $m = new MyMemcached();
-$m->addServer(['127.0.0.1', 11211]);
-$m->set('school', 'zjcj', 0);
-echo $m->get('school');
+$m->addServer(array(['127.0.0.1', 11211]));
+$m->set('school', 'sjsj', 0);
+// $m->s('school', NULL);
+echo $m->s('school');
 ?>
